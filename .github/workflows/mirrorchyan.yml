@@ -17,6 +17,7 @@ jobs:
       - id: uploading
         uses: MirrorChyan/mirrorchyan-uploading@v1
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           owner: MaaXYZ
           repo: MaaFramework
           filename: "MAA-${{ matrix.os }}-${{ matrix.arch }}-*.zip"
