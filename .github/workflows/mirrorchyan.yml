@@ -14,12 +14,17 @@ jobs:
         arch: [aarch64, x86_64]
 
     steps:
-      - id: version
-        uses: pozetroninc/github-action-get-latest-release@master
+      - id: uploading
+        uses: MirrorChyan/mirrorchyan-uploading@v1
         with:
           owner: MaaXYZ
           repo: MaaFramework
-          token: ${{ secrets.GITHUB_TOKEN }}
+          filename: "MAA-${{ matrix.os }}-${{ matrix.arch }}-*.zip"
+          mirrorchyan_rid: MaaFramework
+          upload_token: ${{ secrets.MirrorChyanUploadToken }}
+          os: ${{ matrix.os }}
+          arch: ${{ matrix.arch }}
+          channel: stable
 
       - name: Download Release
         uses: robinraju/release-downloader@v1
