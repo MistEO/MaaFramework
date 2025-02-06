@@ -15,14 +15,15 @@ jobs:
 
     steps:
       - id: uploading
-        uses: MirrorChyan/mirrorchyan-uploading@v1
+        uses: MirrorChyan/uploading-action@v1
         with:
+          filetype: latest-release
+          filename: "MAA-${{ matrix.os }}-${{ matrix.arch }}-*.zip"
           github_token: ${{ secrets.GITHUB_TOKEN }}
           owner: MaaXYZ
           repo: MaaFramework
-          filename: "MAA-${{ matrix.os }}-${{ matrix.arch }}-*.zip"
           mirrorchyan_rid: MaaFramework
           upload_token: ${{ secrets.MirrorChyanUploadToken }}
           os: ${{ matrix.os }}
           arch: ${{ matrix.arch }}
-          channel: stable
+          auto_channel: true
